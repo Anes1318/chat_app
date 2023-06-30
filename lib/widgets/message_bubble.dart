@@ -12,6 +12,7 @@ class MessageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final medijakveri = MediaQuery.of(context);
     return Row(
       mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
@@ -32,11 +33,16 @@ class MessageBubble extends StatelessWidget {
                   fontSize: 15,
                 ),
               ),
-              Text(
-                message,
-                style: TextStyle(
-                  color: isMe ? Colors.deepPurple : Colors.white,
-                  fontSize: 20,
+              Container(
+                constraints: BoxConstraints(
+                  maxWidth: medijakveri.size.width * 0.8,
+                ),
+                child: Text(
+                  message,
+                  style: TextStyle(
+                    color: isMe ? Colors.deepPurple : Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ],
